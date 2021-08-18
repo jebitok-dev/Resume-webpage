@@ -2,6 +2,25 @@
 <html lang="en">
 <head>
   <%- include('../partials/head'); %>
+  <style>
+    body {
+        box-sizing: border-box;
+    }
+
+    form {
+        /* margin: 10%; */
+        width: 400px;
+        /* margin: 10% 40%; */
+    }
+
+    /* .container {
+        margin: 10% 30%;
+    } */
+
+    textarea {
+        height: 300px;
+    }
+</style>
 </head>
 <body class="container">
 
@@ -11,18 +30,25 @@
 
 <main>
 <div class="row">
-  <div class="col-sm-8">
-    <div class="jumbotron">
-      <h1>This is great</h1>
-      <p>Welcome to templating using EJS</p>
-    </div>
-  </div>
-
-  <div class="col-sm-4">
-    <div class="well">
-      <h3>Look I'm A Sidebar!</h3>
-    </div>
-  </div>
+  <div class="container">
+    Please add me to your Team
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Subject</label>
+                    <input type="text" class="form-control" id="subject" aria-describedby="emailHelp" placeholder="Subject">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Message</label>
+                    <textarea class="form-control" id="mesage" placeholder="Message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
 </div>
 </main>
 
