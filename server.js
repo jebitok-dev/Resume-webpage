@@ -4,7 +4,6 @@ const app = express();
 const log = console.log;
 const path = require('path');
 const nodemailer = require('nodemailer');
-const PORT = 8080;
 
 app.use(express.urlencoded({
     extend: false
@@ -51,5 +50,7 @@ app.post('/email', (req, res) => {
         }
       });  
 });
+
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => log( 'Server is listening on port', 8080));
