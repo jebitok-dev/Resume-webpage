@@ -2,8 +2,7 @@
 
 # Resume-webpage
 
-Building resume webpage with a contact form using node.js
-
+Using Nodejs to build a resume webpage with a contact form that enables user to reach out to me in regards to email or hire.
 <!-- ![screenshot](./app/assets/images/signup-twitter.png) -->
 
 ## Built With
@@ -28,18 +27,13 @@ To get this project up and running locally, you must already have ruby and rails
 - $ git clone `$ git clone https://github.com/jebitok-dev/Resume-webpage`
 - $ git checkout main
 - Run `cd Resume-webpage`
-- $ bundle install
-- $ rails db:create
-- $ rails db:migrate
+- $ npm install
+- $ npm start
+
 ```
-- incase you encounter ``autoprefixer`` error add the ``gem 'mini_racer'`` tou your gemfile
 
 ### Run Tests
-
-- `$ rspec spec/models/user_spec.rb `
-- `$ rspec spec/models/opinion_spec.rb`
-- `$ rspec spec/feature/user_login_spec.rb`
-- `$ rspec spec/feature/opinion_create_spec.rb`
+- Fill the contact form below the resume and you'll see success 'Email Sent' on your terminal.
 
 ## Author
 
