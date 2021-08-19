@@ -1,8 +1,18 @@
 require ("dotenv").config()
 const express = require('express');
 const app = express();
-const router = express.Router();
-const sendMail = require('./mail');
+const log = console.log;
+const path = require('path');
+const nodemailer = require('nodemailer');
+const PORT = 8080;
+
+app.use(express.urlencoded({
+    extend: false
+}));
+
+app.use(express.json());
+
+app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
@@ -14,35 +24,32 @@ app.get('/about', function(req, res) {
     res.render('pages/about');
 });
 
-app.get('/about', function(req, res) {
-    res.render('pages/about');
-});
-
-app.use(express.urlencoded({
-    extend: false
-}));
-
-app.use(express.json());
-
-app.listen(8080);
-
-app.post('/', (req, res) => {
+app.post('/email', (req, res) => {
     //Send an email here but currently dummy email
-    const { name, subject, email, text } = req.body;
-    console.log('Data:', req.body);
-    // res.json({message: 'Message received!'})
-    sendMail(name, email, subject, text, function(err, data) {
-        if (err) {
-            res.status(500).json({ message: 'Internal Error' });
-        } else {
-            res.status({ message: 'Email sent!!!' });
+    const { subject, email, message } = req.body;
+    
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+          user: process.env.EMAIL,
+          pass: process.env.PASSWORD
         }
-    });
+      });
+      
+      var mailOptions = {
+        from: `Sharon Jebitok  Resume <noreply@sharon-resume.com>`,
+        to: `sharonkosgei4@gmail.com`,
+        subject: `New Message from Resume`,
+        html: `<p>Hey! Sharon, you have a new message from ${email} on your resume page.</p> <p>Message Contents: ${message}</p>`
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });  
 });
 
-router.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'pages', 'index.ejs'));
-    //__dirname : It will resolve to your project folder.
-});
-
-console.log('Server is listening on port 8080');
+app.listen(PORT, () => log( 'Server is listening on port', 8080));
