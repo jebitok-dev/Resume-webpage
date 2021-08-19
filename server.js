@@ -48,7 +48,9 @@ app.post('/email', (req, res) => {
         } else {
           console.log('Email sent: ' + info.response);
         }
-      });  
+      }); 
+
+      res.send('Message Received Succesfully!')
 });
 
 const PORT = process.env.PORT || 5000;
