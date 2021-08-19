@@ -2,7 +2,7 @@
 
 # Resume-webpage
 
-Using Nodejs to build a resume webpage with a contact form that enables user to reach out to me in regards to email or hire.
+Using Nodejs to build a resume webpage with a contact form that enables user to reach out to me in regards to joining their team or just tech related stuff.
 <!-- ![screenshot](./app/assets/images/signup-twitter.png) -->
 
 ## Built With
